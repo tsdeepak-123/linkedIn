@@ -1,12 +1,11 @@
-
-import NextAuth, { AuthOptions } from 'next-auth';
+import NextAuth from 'next-auth';
 import LinkedInProvider from "next-auth/providers/linkedin";
 
-export const authOptions: AuthOptions = {
+export const authOptions = {
   providers: [
     LinkedInProvider({
-      clientId: process.env.LINKEDIN_CLIENT_ID!,
-      clientSecret: process.env.LINKEDIN_CLIENT_SECRET!,
+      clientId: process.env.LINKEDIN_CLIENT_ID,
+      clientSecret: process.env.LINKEDIN_CLIENT_SECRET,
       authorization: {
         params: {
           scope: 'openid profile email w_member_social',

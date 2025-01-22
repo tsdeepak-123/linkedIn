@@ -1,24 +1,10 @@
-
-// Modified SearchResult.tsx
+// SearchResult.jsx
 import { useState } from 'react';
-import PostsList from './PostsList';
 
-interface SearchResultProps {
-  result: {
-    id: string;
-    name: string;
-    description: string;
-    url: string;
-    industry: string;
-    location: string;
-    size: string;
-  };
-}
-
-const SearchResult = ({ result }: SearchResultProps) => {
+const SearchResult = ({ result }) => {
   const [posts, setPosts] = useState([]);
   const [loadingPosts, setLoadingPosts] = useState(false);
-  const [postsError, setPostsError] = useState<string | null>(null);
+  const [postsError, setPostsError] = useState(null);
   const [showPosts, setShowPosts] = useState(false);
 
   const fetchPosts = async () => {
@@ -62,14 +48,14 @@ const SearchResult = ({ result }: SearchResultProps) => {
             <p className="text-gray-600 text-sm mt-1">{result.industry}</p>
           )}
         </div>
-        <a
-          href={result.url}
+        
+          {/* href={result.url}
           target="_blank"
           rel="noopener noreferrer"
           className="text-blue-600 hover:text-blue-800"
         >
           View Profile
-        </a>
+        </a> */}
       </div>
       
       {result.description && (
@@ -96,7 +82,7 @@ const SearchResult = ({ result }: SearchResultProps) => {
         {showPosts ? 'Hide Posts' : 'Show Posts'}
       </button>
 
-      {showPosts && (
+      {/* {showPosts && (
         <div className="mt-4">
           <PostsList
             posts={posts}
@@ -104,7 +90,7 @@ const SearchResult = ({ result }: SearchResultProps) => {
             error={postsError}
           />
         </div>
-      )}
+      )} */}
     </div>
   );
 };

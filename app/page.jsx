@@ -1,4 +1,4 @@
-// app/page.tsx
+// app/page.jsx
 "use client";
 
 import { useState } from "react";
@@ -86,7 +86,7 @@ export default function Home() {
             )}
 
             <div className="space-y-4">
-              {searchResults.map((result: any) => (
+              {searchResults.map((result) => (
                 <SearchResult key={result.id} result={result} />
               ))}
             </div>

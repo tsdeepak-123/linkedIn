@@ -1,9 +1,9 @@
-// app/api/linkedin/search/route.ts
+// app/api/linkedin/search/route.js
 import { getServerSession } from 'next-auth';
 import { NextResponse } from 'next/server';
 import { authOptions } from '../../auth/[...nextauth]/route';
 
-export async function POST(req: Request) {
+export async function POST(req) {
   try {
     const session = await getServerSession(authOptions);
     
@@ -12,7 +12,7 @@ export async function POST(req: Request) {
     }
 
     const { query } = await req.json();
-    console.log("query",query);
+    console.log("query", query);
     // Using LinkedIn's social platform search API
     const searchUrl = new URL(`https://api.linkedin.com/v2/search?q=companies&keywords=${encodeURIComponent(query)}`);
 
@@ -62,7 +62,7 @@ export async function POST(req: Request) {
         const altData = await altResponse.json();
         console.log('Alternative API Response:', JSON.stringify(altData, null, 2));
         
-        const altResults = altData.elements?.map((company: any) => ({
+        const altResults = altData.elements?.map((company) => ({
           id: company.id || '',
           name: company.name || 'Unknown Organization',
           description: company.description || '',
@@ -87,7 +87,7 @@ export async function POST(req: Request) {
     console.log('API Response:', JSON.stringify(data, null, 2));
 
     // Map the response to include only the fields we need
-    const results = data.elements?.map((element: any) => {
+    const results = data.elements?.map((element) => {
       const company = element.company || element;
       return {
         id: company.id || '',

@@ -3,7 +3,7 @@ import { getServerSession } from 'next-auth';
 import { NextResponse } from 'next/server';
 import { authOptions } from '../../auth/[...nextauth]/route';
 
-export async function POST(req: Request) {
+export async function POST(req) {
   try {
     const session = await getServerSession(authOptions);
     
@@ -32,7 +32,7 @@ export async function POST(req: Request) {
 
     const data = await response.json();
     
-    const posts = data.elements?.map((post: any) => ({
+    const posts = data.elements?.map((post) => ({
       id: post.id,
       text: post.text?.text || '',
       created: post.created?.time || '',
