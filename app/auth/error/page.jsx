@@ -1,12 +1,15 @@
-// app/auth/error/page.tsx
 'use client';
 
-import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 export default function ErrorPage() {
-  const searchParams = useSearchParams();
-  const error = searchParams.get('error');
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setError(params.get('error'));
+  }, []);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
