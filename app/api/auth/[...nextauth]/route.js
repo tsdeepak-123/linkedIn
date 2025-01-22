@@ -6,6 +6,7 @@ export const authOptions = {
     LinkedInProvider({
       clientId: process.env.LINKEDIN_CLIENT_ID,
       clientSecret: process.env.LINKEDIN_CLIENT_SECRET,
+       callbackURL: "http://localhost:3000/auth/linkedin/callback",
       authorization: {
         params: {
           scope: 'openid profile email w_member_social',
